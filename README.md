@@ -6,4 +6,3 @@
 
 ## Kakao Developer
 - https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide
-- Auth : 2f572cb7c4cbbb60f3871069bcbc4f52
