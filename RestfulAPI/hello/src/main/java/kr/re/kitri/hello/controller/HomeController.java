@@ -1,16 +1,23 @@
 package kr.re.kitri.hello.controller;
 
 import kr.re.kitri.hello.domain.Stock;
+import kr.re.kitri.hello.service.SecurityService;
 import kr.re.kitri.hello.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class HomeController {
 
     @Autowired
     private TeamService teamService;
+
+    @Autowired
+    private SecurityService securityService;
 
     @PostMapping("/stocks")
     public Stock registStock(@RequestBody Stock stock) {
@@ -53,5 +60,17 @@ public class HomeController {
         System.out.println("page : " + page + " / limit : " + limit);
         return teamService.viewAllTeams();
     }
+
+
+    @GetMapping("/security/generate/token")
+    public Map<String, Object> generateToken(@RequestParam String subject) {
+        String token = securityService.createToken(subject, 1000 * 60 * 60 * 24L); // 1일
+        Map<String, Object> map = new HashMap<>();
+        map.put("userid", subject);
+        map.put("token", token);
+        System.out.println("TOKEN : " + map.toString());
+        return map;
+    }
+
 
 }

@@ -38,8 +38,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "Id='" + this.userId + '\'' +
-                ", Name='" + this.userName + '\'' +
+                "userId ='" + this.userId + '\'' +
+                ", userName ='" + this.userName + '\'' +
                 ", telNo='" + this.telNo + '\'' +
                 '}';
     }
