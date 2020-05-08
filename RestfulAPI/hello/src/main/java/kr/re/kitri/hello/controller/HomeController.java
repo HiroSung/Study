@@ -1,18 +1,22 @@
 package kr.re.kitri.hello.controller;
 
+import kr.re.kitri.hello.domain.Stock;
 import kr.re.kitri.hello.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HomeController {
 
     @Autowired
     private TeamService teamService;
+
+    @PostMapping("/stocks")
+    public Stock registStock(@RequestBody Stock stock) {
+        System.out.print(stock);
+        return stock;
+    }
 
     @GetMapping("/hello")
     public String Hello() {
